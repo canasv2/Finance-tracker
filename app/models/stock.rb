@@ -5,6 +5,11 @@ class Stock < ApplicationRecord
       publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
-    client.price(ticher_symbol)
+    begin
+      new(ticker: ticher_symbol, name: client.company(ticher_symbol).company_name, last_price: client.price(ticher_symbol) )
+    rescue => exception
+      return nil
+    end
   end
+  
 end
