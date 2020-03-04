@@ -1,5 +1,25 @@
 <h1>My friends</h1>
 
+<div class='search-area'>
+  <h3>Search friends</h3>
+  
+  <%= form_tag search_friend_path, remote: true, method: :get do %>
+    <div class="form-group row">
+      <div class="col-sm-9 no-right-padding">
+        <%= text_field_tag :friend, params[:friend], placeholder: "friend name", autofocus: true, class: "form-control form-control-lg" %><!--"stock" es el nombre de la variable que va a tener el valor de lo que el usuario va a ingresar -->
+      </div>
+      <div class="col-sm-3 no-left-padding">
+        <%= button_tag type: :submit, class: "btn btn-success btn-lg" do %>
+          <%= fa_icon 'search ' %>
+        <% end %>
+      </div>
+    </div>  
+  <% end %>
+</div>
+<div id="friend-results">
+
+</div>
+
 <% if !@my_friends.empty? %>
   <%= render 'users/friends' %>
 <% end %>
