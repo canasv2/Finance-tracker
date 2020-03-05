@@ -10,11 +10,11 @@
           <tr>
             <td><strong>Name: </strong> <%= friend.full_name %></td></td>
             <td><strong>Email: </strong> <%= friend.email %></td>
-            <td><strong>Actions: </strong> <%= link_to "View Profile", '#',
+            <td><strong>Actions: </strong> <%= link_to "View Profile", user_path(friend.id),
                               class: "btn btn-sm btn-success" %>
             <% if current_user.not_friends_with?(friend.id) %>
                               <%= link_to 'Follow friend?', friendships_path(friend: friend),
-                              class: "btn btn-sm btn-success", method: :post %> <!--friend: objeto a enviar.   friend objeto de iteracion -->
+                              class: "btn btn-sm btn-success", method: :post %> <!--friend: nombre de objeto a enviar.   friend objeto de iteracion -->
             <% else %>
               <span class="badge badge-secondary">you are friends </span>                    
             <% end %>                              
